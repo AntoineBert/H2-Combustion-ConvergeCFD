@@ -1,0 +1,207 @@
+version: 4
+---
+
+ns_solver_scheme:         PISO
+ns_solver_type:           density_based
+pressure_ratio_option:    0
+piso:
+   tol_scale:             20
+   piso_tol:              0.001
+   piso_itmin:            2
+   piso_itmax:            9
+   omega_presrat:         0.7
+simple:
+   tol_scale:             20
+   simple_tol:            0.001
+   simple_itmin:          2
+   simple_itmax:          9
+   omega_presrat:         0.7
+   omega_simple:          0.5
+   couple_turb_flag:      0
+adaptive_tol_scale:
+   active:                0
+asymptotic_convergence:
+   active:                0
+   monitor_window_size:   5
+   monitor_window_offset: 5
+   tol:                   0.05
+   itmin:                 11
+   dt_reduce_ratio:       0.9
+adaptive_piso_simple_recover:
+   active:                0
+time_average_lagrangian_sources:
+   averaging:             OFF
+steady_state_solver:
+   under_relax_steady:
+      tol_scale:          100
+numerical_schemes:
+   flux_scheme:
+      mom:                FLUX_BLENDING
+      global:             FLUX_BLENDING
+      turb:               FLUX_BLENDING
+   fv_upwind_factor:
+      mom:                0.5
+      global:             0.5
+      turb:               1
+   monotone_tolerance:    0.025
+   upwind_all_dir_flag:   0
+   muscl_blend_factor:
+      mom:                0
+      global:             0
+      turb:               0
+   flux_limiter:
+      mom:                step
+      global:             step
+      turb:               step
+   implicit_fraction:
+      mom:                1
+      global:             1
+   conserve:              1
+   strict_conserve_level: 2
+   rc_flag:               GENERALIZED_RC
+   omega_turb:            1
+   potential_flow_preconditioner: None
+   least_squares_gradient_terms: []
+   non_orthogonal_correction:
+      option:             OFF
+transport:
+   mom:
+      solver_type:        SOR
+      tol:                1e-05
+      itmin:              0
+      itmax:              50
+      omega:              1
+      preconditioner:     None
+   pres:
+      solver_type:        CONVERGE_BICGSTAB
+      tol:                1e-08
+      itmin:              2
+      itmax:              300
+      omega:              1.1
+      preconditioner:     SOR
+      reference_pressures:
+         []
+   density:
+      solver_type:        SOR
+      tol:                0.0001
+      itmin:              0
+      itmax:              2
+      omega:              1
+      preconditioner:     None
+   energy:
+      solver_type:        SOR
+      tol:                0.0001
+      itmin:              0
+      itmax:              2
+      omega:              1
+      preconditioner:     None
+      cht_stream_coupling: 0
+      nk_flag:            0
+   species:
+      solver_type:        SOR
+      tol:                0.0001
+      itmin:              0
+      itmax:              2
+      omega:              1
+      preconditioner:     None
+   passive:
+      solver_type:        SOR
+      tol:                1e-05
+      itmin:              0
+      itmax:              50
+      omega:              1
+      preconditioner:     None
+   scalar:
+      solver_type:        SOR
+      tol:                1e-05
+      itmin:              0
+      itmax:              50
+      omega:              1
+      preconditioner:     None
+   radiation:
+      solver_type:        SOR
+      tol:                1e-08
+      itmin:              0
+      itmax:              500
+      omega:              1
+      preconditioner:     None
+   wall_dist:
+      solver_type:        GEOMETRIC
+      tol:                0.001
+      itmin:              0
+      itmax:              500
+      omega:              1.1
+      preconditioner:     None
+   tke:
+      solver_type:        SOR
+      tol:                0.001
+      itmin:              2
+      itmax:              50
+      omega:              0.7
+      preconditioner:     None
+      min_value:          1e-07
+   sgs_ke:
+      solver_type:        SOR
+      tol:                0.001
+      itmin:              2
+      itmax:              50
+      omega:              0.7
+      preconditioner:     None
+      min_value:          1e-07
+   eps:
+      solver_type:        SOR
+      tol:                0.001
+      itmin:              2
+      itmax:              50
+      omega:              0.7
+      preconditioner:     None
+      min_value:          1e-06
+   sgs_eps:
+      solver_type:        SOR
+      tol:                0.001
+      itmin:              2
+      itmax:              50
+      omega:              0.7
+      preconditioner:     None
+      min_value:          1e-06
+   omega:
+      solver_type:        SOR
+      tol:                0.001
+      itmin:              2
+      itmax:              50
+      omega:              0.7
+      preconditioner:     None
+      min_value:          1e-06
+   v2:
+      solver_type:        SOR
+      tol:                0.001
+      itmin:              2
+      itmax:              50
+      omega:              0.7
+      preconditioner:     None
+   f:
+      solver_type:        CONVERGE_BICGSTAB
+      tol:                0.001
+      itmin:              2
+      itmax:              100
+      omega:              1.1
+      preconditioner:     SOR
+      min_value:          1e-16
+   zeta:
+      solver_type:        SOR
+      tol:                0.001
+      itmin:              2
+      itmax:              50
+      omega:              0.7
+      preconditioner:     None
+   electric_potential:
+      solver_type:        SOR
+      tol:                1e-12
+      itmin:              0
+      itmax:              500
+      omega:              1.1
+      preconditioner:     None
+      nk_flag:            1
+      nk_dim:             80
+      nk_precon_iter:     40
+

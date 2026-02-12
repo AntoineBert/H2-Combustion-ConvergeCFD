@@ -1,0 +1,17 @@
+version: 4
+---
+
+bore:                     0.0773
+stroke:                   0.0776
+connecting_rod:           0.1265
+crank_offset:             0
+zero_piston_tdc_flag:     0
+rpm:                      2000
+swirl:                    0
+swirl_profile:            3.11
+zhead:                    0
+piston_id:                1
+liner_id:                 2
+head_id:                  4
+crevice_flag:             0
+

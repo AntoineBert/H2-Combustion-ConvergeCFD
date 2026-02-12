@@ -1,0 +1,158 @@
+version: 4
+---
+
+surface_filename:         1L_engine_surface.dat
+mechanism_filename:       mech.dat
+simulation_control:
+   crank_flag:            1
+   start_time:            -378
+   end_time:              1098
+   restart_flag:          0
+   restart_number:        1
+   map_flag:              OFF
+   check_grid_motion_flag: 0
+   load_cyc:              AUTO
+   imbalance_factor:      125
+   reread_input:          1
+   random_seed:           0
+output_control:
+   log_level:             2
+   twrite_post:           TwritePost.in
+   twrite_transfer:       10
+   twrite_files:          0.1
+   twrite_restart:        10
+   twrite_restart_max_wct: 1
+   numerics_output_flag:  1
+   custom_time_flag:      0
+   custom_time_unit:      ""
+   custom_time_conv:      0
+   custom_output_flag:    0
+   num_restart_files:     3
+   write_map_flag:        0
+   write_cycle_avg_transfer_flag: 0
+   wall_output_flag:      OFF
+   transfer_flag:         0
+   energy_output_flag:    0
+   equiv_ratio_output_flag: 1
+   equiv_ratio_bin_size:  0.1
+   equiv_ratio_num_bins:  20
+   species_output_flag:   1
+   region_flow_flag:      1
+   dynamic_flag:          0
+   force_output_flag:     0
+   monitor_points_flag:   0
+   uniformity_index_output_flag: 0
+   smd_pdf_flag:          0
+   walltime_output_flag:  0
+   output_multiplier:     1
+   paraview_catalyst_flag: 0
+grid_control:
+   base_grid:             [0.004, 0.004, 0.004]
+   grid_scale:            0
+   amr_flag:              1
+   events_flag:           1
+   embedded_flag:         1
+   inlaid_mesh_flag:      0
+   min_vol_ratio:         0.3
+   seal_tol:              0.0005
+   auto_reloft_flag:      0
+temporal_control:
+   time_flag:             1
+   dt_start:              1e-07
+   dt_max:                0.0001
+   dt_min:                1e-08
+   dt_fixed:              1e-08
+   mult_dt_parcel:        1.5
+   mult_dt_evap:          9999
+   mult_dt_chem:          0.5
+   mult_dt_coll_mesh:     1
+   mult_dt_move:          1
+   max_cfl_u:             5
+   max_cfl_nu:            2
+   max_cfl_mach:          50
+   max_cfl_k:             2
+   cfl_limit_compliance:
+      cfl_cutoff_percentage: 100
+      cfl_distribution_bin_size: 0.001
+solver_control:
+   momentum_solver:       1
+   energy_solver:         INTERNAL
+   species_solver:        1
+   turbulence_solver:     1
+   steady_solver:         0
+   monitor_steady_state:  0
+   gas_compressible_flag: 1
+   liquid_compressible_flag: 0
+property_control:
+   tabular_fluid_properties:
+      option:             OFF
+   eos_flag:              redlich_kwong
+   crit_temp:             133
+   crit_pres:             3770000
+   acentric_factor:       0.035
+   min_temp:              10
+   max_temp:              60000
+   gravity:               [0, 0, 0]
+   boussinesq_flag:       0
+   init_hydrostatic_pres_flag: 0
+   gas_mol_transport_properties:
+      individual_properties_flag: 0
+      species_diffusivity_model: 1
+      momentum_viscosity_model: mixture_averaged
+      thermal_conductivity_model: mixture_averaged
+      soret_diffusion_model: 0
+      prandtl:            0.9
+      schmidt:            0.78
+   gas_mol_thermodynamic_properties:
+      file_format:        JANAF_POLYNOMIAL
+      janaf_filename:     therm.dat
+      tabular_filename:   tabular_therm.dat
+      lhv_flag:           0
+      real_gas_prop_flag: 0
+      max_reduced_pres:   6
+feature_control:
+   parcel_mode:
+      liquid_parcel:      0
+      solid_parcel:       0
+      gas_parcel:         0
+   parcel_breakup_flag:   0
+   urea_flag:             0
+   combustion_flag:       1
+   source_flag:           1
+   aniso_cond_flag:       0
+   adjoint_solver_flag:   0
+   composite_flag:        0
+   wallvalue_flag:        0
+   udf_flag:              0
+   cht_supercycle_flag:   0
+   vof_flag:              0
+   fixed_flow_flag:       0
+   fsi_flag:              0
+   erosion_flag:          0
+   rotor_models_flag:     0
+   electric_potential_flag: 0
+   ecell_flag:            0
+   flow_profiles_flag:    0
+   radiation_flag:        0
+   nucleate_boiling_flag: 0
+   skip_species_flag:     0
+   mrf_flag:              0
+   mixing_plane_flag:     0
+   prox_check_flag:       0
+   thin_gap_model_flag:   0
+   cosimulation_flag:     0
+   initial_perturbation_flag: 0
+   post_emission_flag:    0
+   motion_sets_flag:      0
+   acoustics_flag:        0
+   statistics_flag:       0
+ga_control:
+   ga_flag:               0
+   ga_individual:         0
+   ga_generation:         0
+mpi_control:
+   shared_memory_flag:    1
+accelerator_control:
+   use_gpu_flag:          0
+   enable_pin_mem:        0
+

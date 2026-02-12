@@ -1,0 +1,65 @@
+version: 4
+---
+
+-  embedding:
+      embed_type:         CYLINDER
+      first_end:
+         x_center:        [0, 0, -0.1]
+         radius:          0.05
+      second_end:
+         x_center:        [0, 0, 0.1]
+         radius:          0.05
+      embed_scale:        2
+      temporal_type:      PERMANENT
+      start_time:         -999999
+      end_time:           -999999
+      description:        Embedding 15
+      moving_control:
+         moving_flag:     STATIONARY
+-  embedding:
+      embed_type:         SPHERE
+      x_center:           [0.0275, -0.0025, 0.003]
+      radius:             0.0005
+      embed_scale:        6
+      temporal_type:      CYCLIC
+      period:             720
+      start_time:         -5
+      end_time:           20
+      description:        Embedding 16
+      moving_control:
+         moving_flag:     STATIONARY
+-  embedding:
+      embed_type:         SPHERE
+      x_center:           [0.0275, -0.0025, 0.003]
+      radius:             0.001
+      embed_scale:        5
+      temporal_type:      CYCLIC
+      period:             720
+      start_time:         -5
+      end_time:           20
+      description:        Embedding 17
+      moving_control:
+         moving_flag:     STATIONARY
+-  embedding:
+      embed_type:         BOUND
+      boundary_id:        13
+      embed_scale:        3
+      num_embed:          1
+      temporal_type:      PERMANENT
+      start_time:         -999999
+      end_time:           -999999
+      description:        Embedding 18
+      moving_control:
+         moving_flag:     STATIONARY
+-  embedding:
+      embed_type:         BOUND
+      boundary_id:        11
+      embed_scale:        3
+      num_embed:          1
+      temporal_type:      PERMANENT
+      start_time:         -999999
+      end_time:           -999999
+      description:        Embedding 19
+      moving_control:
+         moving_flag:     STATIONARY
+

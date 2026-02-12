@@ -1,0 +1,17 @@
+version: 4
+---
+
+events:
+   -  event:
+         type:            valve
+         regions:         [0, 1]
+         contact_resistance_flag: 0
+         temporal_type:   CYCLIC
+         period:          720
+   -  event:
+         type:            valve
+         regions:         [0, 2]
+         contact_resistance_flag: 0
+         temporal_type:   CYCLIC
+         period:          720
+

@@ -1,0 +1,14 @@
+version: 4
+##!Exported by CONVERGE Studio v4.1.2 Dec 17 2024
+---
+
+cells:
+   general:               [mach, cfl_u, density, cfl_mach, pressure, temperature, dt, velocity, cfl_nu]
+   combustion:            [equiv_ratio, react_ratio]
+   turbulence:            [eps, tke, turb_length, turb_viscosity]
+   statistics:            []
+   species_massfrac:      [H2O, H2, O2]
+   species_molefrac:      [H2, O2]
+region_list:              ALL
+flow_through_treatment:   CELL_FACE
+

@@ -1,0 +1,42 @@
+version: 4
+---
+
+amr_settings:
+   max_cells:             10000000
+   min_cells:             1
+   transient_settings:
+      embed_frequency:    1
+      release_frequency:  25
+amr_groups:
+   -  amr_group:
+         amr_regions:     0
+         amr_velocity:
+            active:       1
+            embed_scale:  3
+            sgs_embed:    1
+            temporal_type: PERMANENT
+            amr_type:     sgs
+         amr_temperature:
+            active:       1
+            embed_scale:  4
+            sgs_embed:    2.5
+            temporal_type: CYCLIC
+            period:       720
+            start_time:   -30
+            end_time:     130
+            amr_type:     sgs
+   -  amr_group:
+         amr_regions:     1
+         amr_velocity:
+            active:       1
+            embed_scale:  3
+            sgs_embed:    1
+            temporal_type: PERMANENT
+            amr_type:     sgs
+amr_bounds:
+   []
+amr_yplus_restrict:
+   []
+amr_proximity:
+   []
+

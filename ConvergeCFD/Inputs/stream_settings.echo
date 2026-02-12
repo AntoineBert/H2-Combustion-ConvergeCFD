@@ -1,0 +1,22 @@
+version: 4
+---
+
+stream_match_species_settings: 0
+post_file_option:         COMBINED
+stream_list:
+   -  stream:
+         id:              0
+         name:            Stream0
+         solid_flag:      0
+         override_directory: ""
+         region_list:
+            -  region:
+                  id:     1
+                  name:   Intake
+            -  region:
+                  id:     0
+                  name:   Cylinder
+            -  region:
+                  id:     2
+                  name:   Exhaust
+

@@ -1,0 +1,104 @@
+# CONVERGE 4.0.3/  Aug  6 2024       Run Date:Wed Jun  4 14:16:41 2025
+
+# Num     SPECIES                  PHASE           MW      LOW       MID      HIGH          C          H          O          N         HE         AR
+#
+    1     AR                           G   3.9948e+01   200.00   1000.00   6000.00          0          0          0          0          0          1
+    2     N2                           G   2.8013e+01   200.00   1000.00   6000.00          0          0          0          2          0          0
+    3     HE                           G   4.0026e+00   200.00   1000.00   6000.00          0          0          0          0          1          0
+    4     H2                           G   2.0159e+00   200.00   1000.00   6000.00          0          2          0          0          0          0
+    5     H                            G   1.0080e+00   200.00   1000.00   6000.00          0          1          0          0          0          0
+    6     O2                           G   3.1999e+01   200.00   1000.00   6000.00          0          0          2          0          0          0
+    7     O                            G   1.5999e+01   200.00   1000.00   6000.00          0          0          1          0          0          0
+    8     H2O                          G   1.8015e+01   200.00   1000.00   6000.00          0          2          1          0          0          0
+    9     OH                           G   1.7007e+01   200.00   1000.00   6000.00          0          1          1          0          0          0
+   10     OHV                          G   1.7007e+01   300.00   1000.00   5000.00          0          1          1          0          0          0
+   11     H2O2                         G   3.4015e+01   200.00   1000.00   6000.00          0          2          2          0          0          0
+   12     HO2                          G   3.3007e+01   200.00   1000.00   5000.00          0          1          2          0          0          0
+
+# REACTIONS: units for E are CAL/MOLE
+# Num     REACTION                                               A       b          E
+#
+    1     H2+M<=>2H+M                                     4.58E+19   -1.40  104400.00
+          HE                       Enhanced by    8.300E-01
+          H2                       Enhanced by    2.500E+00
+          H2O                      Enhanced by    1.200E+01
+    2     H2+O<=>H+OH                                     3.80E+12    0.00    7948.00
+          Declared duplicate reaction...
+    3     H2+O<=>H+OH                                     8.80E+14    0.00   19175.00
+          Declared duplicate reaction...
+    4     H2+OH<=>H+H2O                                   2.20E+08    1.51    3430.00
+    5     2H+O2<=>H2+O2                                   8.80E+22   -1.83     800.00
+    6     2H+O2<=>2OH                                     4.00E+22   -1.83     800.00
+    7     H+O2+O<=>O2+OH                                  7.35E+22   -1.83     800.00
+    8     H+O2+OH<=>O2+H2O                                2.56E+22   -1.83     800.00
+    9     2O+M<=>O2+M                                     6.16E+15   -0.50       0.00
+          HE                       Enhanced by    8.300E-01
+          AR                       Enhanced by    8.300E-01
+          H2                       Enhanced by    2.500E+00
+          H2O                      Enhanced by    1.200E+01
+   10     H+O2<=>O+OH                                     1.04E+14    0.00   15286.00
+   11     H+OH(+M)<=>H2O(+M)                              2.50E+13    0.23    -114.00
+          Low pressure limit:  4.53000E+21 -1.81000E+00  4.92000E+02
+          TROE centering:      7.30000E-01  1.00000E-30  1.00000E+30  1.00000E+30
+          AR                       Enhanced by    4.000E-01
+          HE                       Enhanced by    5.700E-01
+          O2                       Enhanced by    1.000E+00
+          N2                       Enhanced by    1.000E+00
+          H2                       Enhanced by    1.500E+00
+          H2O                      Enhanced by    1.300E+01
+   12     2OH<=>O+H2O                                     2.88E+06    1.79   -1750.00
+   13     H+O+M<=>OH+M                                    4.71E+18   -1.00       0.00
+          AR                       Enhanced by    7.500E-01
+          HE                       Enhanced by    7.500E-01
+          H2                       Enhanced by    2.500E+00
+          H2O                      Enhanced by    1.200E+01
+   14     H+O+M<=>OHV+M                                   4.43E+14    0.00   10000.00
+          AR                       Enhanced by    4.000E-01
+          O2                       Enhanced by    8.000E-01
+          H2                       Enhanced by    2.000E+00
+          H2O                      Enhanced by    1.200E+01
+   15     H2O+OHV<=>H2O+OH                                5.92E+12    0.50    -860.00
+   16     H2+OHV<=>H2+OH                                  2.95E+12    0.50    -444.00
+   17     N2+OHV<=>N2+OH                                  2.10E+12    0.50    -482.00
+   18     OH+OHV<=>2OH                                    1.50E+12    0.50      -0.00
+   19     H+OHV<=>H+OH                                    1.50E+12    0.50      -0.00
+   20     AR+OHV<=>AR+OH                                  2.17E+10    0.50    2060.00
+   21     OHV<=>OH                                        1.40E+06    0.00       0.00
+   22     O2+OHV<=>O2+OH                                  2.10E+12    0.50    -482.00
+   23     O+OHV<=>O+OH                                    1.50E+12    0.50      -0.00
+   24     H2O2(+M)<=>2OH(+M)                              2.00E+12    0.90   48749.00
+          Low pressure limit:  2.35000E+24 -2.29300E+00  4.87434E+04
+          TROE centering:      4.30000E-01  1.00000E-30  1.00000E+30
+          HE                       Enhanced by    4.400E-01
+          O2                       Enhanced by    7.900E-01
+          N2                       Enhanced by    1.500E+00
+          H2                       Enhanced by    3.700E+00
+          H2O                      Enhanced by    5.100E+00
+          H2O2                     Enhanced by    5.200E+00
+   25     H+H2O2<=>H2O+OH                                 2.41E+13    0.00    3970.00
+   26     H+H2O2<=>H2+HO2                                 5.02E+06    2.07    4300.00
+   27     O+H2O2<=>OH+HO2                                 9.55E+06    2.00    3970.00
+   28     OH+H2O2<=>H2O+HO2                               1.74E+12    0.00     318.00
+          Declared duplicate reaction...
+   29     OH+H2O2<=>H2O+HO2                               7.59E+13    0.00    7269.00
+          Declared duplicate reaction...
+   30     H+HO2<=>H2+O2                                   2.80E+06    2.09   -1451.00
+   31     H+HO2<=>2OH                                     7.08E+13    0.00     295.00
+   32     O+HO2<=>O2+OH                                   3.25E+13    0.00       0.00
+   33     OH+HO2<=>O2+H2O                                 1.93E+20   -2.49     584.24
+          Declared duplicate reaction...
+   34     OH+HO2<=>O2+H2O                                 1.21E+09    1.24   -1307.58
+          Declared duplicate reaction...
+   35     2HO2<=>O2+H2O2                                  1.21E+10    0.42   -1480.52
+          Declared duplicate reaction...
+   36     2HO2<=>O2+H2O2                                  1.69E+16   -0.68   12931.66
+          Declared duplicate reaction...
+   37     H+O2(+M)<=>HO2(+M)                              4.66E+12    0.44       0.00
+          Low pressure limit:  1.23000E+19 -1.20000E+00  0.00000E+00
+          TROE centering:      5.00000E-01  1.00000E+00  1.00000E+10
+          HE                       Enhanced by    5.200E-01
+          AR                       Enhanced by    6.500E-01
+          O2                       Enhanced by    9.000E-01
+          H2                       Enhanced by    1.350E+00
+          H2O                      Enhanced by    1.660E+01
+

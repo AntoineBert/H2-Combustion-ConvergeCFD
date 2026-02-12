@@ -1,0 +1,18 @@
+version: 4
+##!Exported by CONVERGE Studio v4.1.2 Dec 17 2024
+---
+
+events:
+   -  event:
+         type:            valve                                       # Event type: open, close, valve, rigid_fsi, beam, pressure.
+         regions:         [0, 1]                                      # Event region(s).
+         contact_resistance_flag: 0                                   # Event contact resistance flag.
+         temporal_type:   CYCLIC                                      # Event temporal type.
+         period:          720                                         # Event cyclic Period.
+   -  event:
+         type:            valve                                       # Event type: open, close, valve, rigid_fsi, beam, pressure.
+         regions:         [0, 2]                                      # Event region(s).
+         contact_resistance_flag: 0                                   # Event contact resistance flag.
+         temporal_type:   CYCLIC                                      # Event temporal type.
+         period:          720                                         # Event cyclic Period.
+

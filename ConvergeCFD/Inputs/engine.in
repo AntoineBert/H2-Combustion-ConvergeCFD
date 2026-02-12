@@ -1,0 +1,18 @@
+version: 4
+##!Exported by CONVERGE Studio v4.1.2 Dec 17 2024
+---
+
+bore:                     0.0773                                      # Engine cylinder bore (m).
+stroke:                   0.0776                                      # Engine cylinder stroke (m).
+connecting_rod:           0.1265                                      # Engine connecting rod length (m).
+crank_offset:             0                                           # Engine crank offset (m).
+zero_piston_tdc_flag:     0                                           # This flag only affects simulations of engine geometries with a wrist pin offset. 0 = Piston TDC (minimum volume) will be reached before or after 0 CAD, based on wrist pin offset, 1 = Piston TDC (minimum volume) will be at 0 CAD.
+rpm:                      2000                                        # Engine speed in RPM.
+swirl:                    0                                           # Initial swirl ratio.
+swirl_profile:            3.11                                        # Swirl profile dimensionless constant.
+zhead:                    0                                           # Cylinder head position (z coordinate) (m).
+piston_id:                1                                           # Piston boundary ID.
+liner_id:                 2                                           # Liner boundary ID.
+head_id:                  4                                           # Head boundary ID.
+crevice_flag:             0                                           # Flag to activate Crevice model: 0=do not use Crevice model, 1=use Crevice model (requires crevice.in).
+

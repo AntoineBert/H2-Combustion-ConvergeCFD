@@ -1,0 +1,22 @@
+# --- Sauvegardes automatiques MATLAB ---
+*.asv
+*.m~
+
+# --- Fichiers de cache et de simulation Simulink ---
+slprj/
+*.slxc
+*.mex*
+
+# --- Rapports et logs de simulation ---
+*.log
+DiagnosticLog.txt
+
+# --- Fichiers de données temporaires ---
+*.mat
+!*.mat # (Optionnel : enlève le ! si tu VEUX sauvegarder certains fichiers .mat importants)
+
+# --- Fichiers système et IDE ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

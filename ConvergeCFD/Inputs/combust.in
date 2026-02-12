@@ -1,0 +1,243 @@
+version: 4
+##!Exported by CONVERGE Studio v4.1.2 Dec 17 2024
+---
+
+general_control:
+   region_flag:           1                                           # 0=Combustion is not region-dependent, 1=Combustion is region-dependent.
+   temporal_type:         SEQUENTIAL                                  # Temporal type: SEQUENTIAL, PERMANENT or CYCLIC.
+   start_time:            -999999                                     # Combustion start time in seconds or crank angle degrees.
+   end_time:              -999999                                     # Combustion end time in seconds or crank angle degrees.
+   temp_cutoff:           600                                         # Minimum cell temperature (K) for Combustion activation.
+   hc_minimum:            1e-08                                       # Minimum HC+CO species mole fraction for Combustion activation.
+emissions_flag:           0                                           # Flag for Emissions model: 0=off, 1=on (emissions.in is required).
+sage_model:
+   active:                1                                           # SAGE detailed chemistry model flag: 0=no SAGE model, 1=activate SAGE model.
+   option:                CONSTANT_VOLUME                             # constant_volume or constant_pressure.
+   ode_solver:
+      type:               DENSE                                       # DENSE=CVODES with dense solver (recommended for up to 100 species), ITERATIVE=CVODES with preconditioned iterative solver, ITERATIVE_SUPERLU=CVODES with preconditioned iterative solver with SuperLU, ITERATIVE_CONVERGE=CVODES with preconditioned iterative solver using in-house solver, NONSTIFF_DENSE=CVODES with non-stiff dense solver(recommend for single step or non-stiff several step mechanisms).
+      analyt_jac:         1                                           # Flag to determine if Jacobian matrix is solved analytically in the SAGE solver: 0=solve Jacobian matrix numerically, 1=solve Jacobian matrix analytically.
+      rel_tol:            0.0001                                      # Relative iteration error for each species in the SAGE solver.
+      abs_tol:            1e-14                                       # Absolute iteration error for each species in the SAGE solver.
+      reaction_multiplier: 1                                          # Scaling factor of reaction rates in the SAGE solver.
+      cvode_iterative_epslin: 0.05
+   solve_temp:            0                                           # SAGE temperature solution flag: 0=do not re-solve temperature unless its change exceeds sage_delta_temp, 1=always re-solve temperature.
+   delta_temp:            2                                           # Magnitude of the temperature change (K), above which temperature will be re-solved in SAGE.
+   dmr_flag:              0                                           # Use Dynamic Mechanism Reduction (sage_dmr.in is required).
+   cvode_error_output_flag: 0                                         # Sets up zero_d_cases_rank#.out for any cells that have CVODE errors and the temperature is below 5000 K; temperature, pressure, and species mass fractions are copied over from the cell for each case.
+liquid_sage_model:
+   active:                0                                           # 0=No Liquid SAGE modeling, 1=Liquid SAGE modeling is used.
+   mechanism_filename:    liquid_mech.dat                             # Mechanism file for Liquid SAGE (liquid_mech.dat).
+   region_flag:           0                                           # 0=Liquid SAGE is not region-dependent, 1=Liquid SAGE is region-dependent.
+   temporal_type:         CYCLIC                                      # Temporal type: SEQUENTIAL, PERMANENT or CYCLIC.
+   period:                720                                         # Cycle period.
+   start_time:            -999999                                     # Combustion start time in seconds or crank angle degrees.
+   end_time:              -999999                                     # Combustion end time in seconds or crank angle degrees.
+   ode_solver:
+      analyt_jac:         1                                           # Flag to determine if Jacobian matrix is solved analytically in the SAGE solver: 0=solve Jacobian matrix numerically, 1=solve Jacobian matrix analytically.
+      rel_tol:            0.0001                                      # Relative iteration error for each species in the SAGE solver.
+      abs_tol:            1e-14                                       # Absolute iteration error for each species in the SAGE solver.
+      reaction_multiplier: 1                                          # Scaling factor of reaction rates in the SAGE solver.
+thickened_flame_model:
+   active:                0                                           # 0=Don't use thickened flame model, 1=Use thickened flame model.
+   region_flag:           0                                           # Flag to activate region-based thickening factor and model starting time (requires tfm_region.in).
+   start_time:            0                                           # Model start time, the end time is the same of combustion end time.
+   thickening_method:
+      option:             0                                           # 0=Constant maximum thickening factor, 1=Constant number of grid points across the flame, 2=Target flame thickness.
+      max_thickening_factor: 1                                        # Constant maximum thickening factor.
+      num_grid_across_flame: 5                                        # Number of grid points across the flame front.
+      target_flame_thickness: 0.001                                   # Target flame thickness.
+   thickening_amr_couple:
+      active:             0                                           # 0=No coupling between thickening and AMR, 1=Coupling AMR with thickening process.
+      amr_strength_level: 2                                           # AMR strength level: 0=Floor, 1=Round, 2=Ceil.
+   flame_sensor_model:
+      option:             2                                           # 0=Uniform thickening, 1=Standard reaction rate model, 2=Jaravel's sensor.
+      sensor_slope:       5                                           # Multiplier for the sensor species reaction rate.
+      sensor_species:     HEAT_RELEASE_RATE                           # Species that is used to define the reaction rate of the sensor. The species list is loaded from the laminar flamespeed table file.
+      ref_reaction_rate:  0.001                                       # Maximum sensor species reaction rate based on the 1D planar laminar flame.
+      reaction_sensor_model:
+         gamma:           0.4                                         # Parameter to calculate the 'pseudo reaction rate'.
+         beta:            5                                           # Parameter to calculate the 'pseudo reaction rate'.
+         reaction_rate_ratio: 0.5                                     # Ratio of 'pseudo reaction rate' to sensor species reaction rate.
+      jaravel_sensor_model:
+         ref_psi:         20                                          # Maximum value of flame sensor.
+         alpha_hot:       0.005                                       # Time scale of the sink for the flame sensor in the hot side.
+         alpha_cold:      0.05                                        # Time scale of the sink for the flame sensor in the cold side.
+         time_scale_constant: 20                                      # Time scale of the source for the flame sensor.
+   efficiency_factor_model:
+      option:             2                                           # 0=Constant efficiency, 1=Charlette's model, 2=Colin's model.
+      constant_efficiency_factor: 1                                   # Constant efficiency factor. Used when 'efficiency_factor_option' is 0 (Constant efficiency).
+      uprime_model:       0                                           # Uprime model: 0=Based on curl of the resolved velocity, 1=Based on sub-grid tke.
+      uprime_multiplier:  1                                           # Uprime multiplier.
+      charlette_model:
+         beta:            0.5                                         # Charlette's model parameter.
+      colin_model:
+         beta:            0.3                                         # Colin's model parameter.
+   wall_treatment_flag:   0                                           # 0=Turn off wall treatment, 1=Turn on wall treatment (near the wall within the flame thickness, the flame is not thickened).
+eddy_dissipation_model:
+   active:                0                                           # 0=do not use EDM (Eddy Dissipation Model), 1=Use EDM.
+   factor_a:              4                                           # Empirical constant which may depend on the structure of the flame and the rate of reaction between fuel and oxygen, default is 4.0.
+   factor_b:              0.5                                         # Empirical constant in reaction rate calculation considering the dissipation of the hot eddies. default is 0.5.
+   max_mixing_rate:       2500                                        # The maximum mixing rate used in the EDM model, default is 2500.0.
+   hybrid_flag:           0                                           # 0=do not use Hybrid model, 1=Use Hybrid model.
+ceq_model:
+   active:                0                                           # CEQ equilibrium solver flag: 0=no CEQ, 1=activate CEQ, 2=activate CEQ with mixing time scale.
+   subset_species:        []                                          # Species name to be solved as part of the CEQ equilibrium solver.
+   cm2:                   0.1
+adaptive_zone_model:
+   active:                1                                           # 0=do not use adaptive zoning, 1=use adaptive zoning.
+   bin_options:
+      -  bin_variable:
+            name:         react_ratio                                 # Name of the adaptive bin variable.
+            size:         0.05                                        # Size of adaptive bin variable.
+            min:          0                                           # Min value of adaptive bin variable.
+            max:          100                                         # Max value of adaptive bin variable.
+      -  bin_variable:
+            name:         temp                                        # Name of the adaptive bin variable.
+            size:         5                                           # Size of adaptive bin variable.
+            min:          0                                           # Min value of adaptive bin variable.
+            max:          10000                                       # Max value of adaptive bin variable.
+   nox_flag:              1                                           # 0=default, 1=improves the accuracy of NOx emissions prediction in the adaptive zoning.
+   stiffness_load_balance_flag: 0                                     # Load balance chemistry by ODE systems' stiffness.
+   output_flag:           0                                           # 0=no additional output for adaptive zoning chemistry, 1=activate additional output for adaptive zoning chemistry.
+   hr_map_flag:           0                                           # Use heat release mapping.
+   remap_mode_option:     2                                           # 0=simple average method, 1=Long Liang's method, 2=ch value method, 3=ch value modified method for recovery, 4=remap method for ECFM3Z, 5=dynamic buffering damped ch value method.
+   mpi_mode_option:       1                                           # 0=old zoning communication method, 1=new zoning communication method (default for parallel run).
+three_points_pdf_model:
+   active:                0                                           # 0=Turn off three-point PDF method, 1=Turn on three-point PDF method.
+   fluctuation_variable:  PHI                                         # phi (equivalence ratio fluctuation for non-premixed flame) or temp (temperature fluctuation for premixed flame).
+   transport_variance_flag: 0                                         # 0=Calculate variance explicitly, 1=Solve variance transport equation.
+   variance_cmu:          0.2                                         # Model constant for variance calculation.
+   mixing_relaxation_flag: 1                                          # 0=Turn off mixing relaxation, 1=Turn on mixing relaxation.
+   relaxation_constant:   3                                           # Mixing relaxation parameter.
+fuel_names:               H2                                          # Fuel species names.
+ctc_model:
+   active:                0                                           # Characteristic Time Combustion (CTC) model flag: 0=no CTC model, 1=activate CTC model.
+   init_time:             -999999                                     # Time for CTC model initialization (s/deg).
+   mult_scale_flag:       1                                           # Multi-scale CTC model flag: 0=single scale CTC model, 1=multi-scale CTC model.
+   tau_fraction:          0.2                                         # Multi-scale CTC time scale fraction.
+   cm2:                   0.1                                         # CTC turbulent time scale constant.
+   denomc:                7680000000                                  # CTC chemical time scale constant.
+   temp_cutoff:           1000                                        # Transition temperature (K) for Shell/CTC models.
+shell_model:
+   active:                0                                           # Shell ignition model flag: 0=no Shell model, 1=activate conserving Shell model, 2=activate original Shell model.
+   af04:                  125000                                      # Shell model ignition delay parameter.
+fgm_model:
+   active:                0                                           # Flag for FGM model: 0=off, 1=run FGM.
+   fgm_table_filename:    ""                                          # This file is required by the FGM model and can be generated within the Chemistry module.
+   cfd_c_chi:             2                                           # CFD scalar dissipation constant.
+   source_term_relax_factor: 1
+edsim_spark_flag:         0                                           # Flag for source term in edsim. SAGE model must be activated.
+ecfm_model:
+   active:                0                                           # Flag for ECFM model: 0=off, 1=on.
+   stretch_alpha:         1.6                                         # Constant for turbulent stretch introduced the surface density production term.
+   itnfs_model:           1                                           # Turbulent flame stretch model (1 by default).
+   destruct_beta:         1                                           # Constant for the surface density destruction term.
+   spark:
+      active:             0                                           # 0=Imposed Stretch Spark Ignition Model is off, 1=Imposed Stretch Spark Ignition Model is on.
+   auto_ignition:
+      active:             0                                           # 0=tabulated kinetics of ignition is off, 1=tabulated kinetics of ignition is on.
+      tki_table_filename: tki_table.h5                                # This file is required by the TKI model (tabulated kinetics of ignition).
+   ai_fsd_factor:         0                                           # Flame surface density deposition factor due to auto-ignition (0 by default).
+   post_flame_model:      0                                           # 0=Solve burned zone with method by Colin et al. (2003), 1=Solve burned zone with CEQ method, 2=Solve burned zone with SAGE.
+   reinit_flag:           2                                           # 0=Single cycle simulation, 1=Custom reinitialization (ecfm3z_reinit.in required), 2=Automatic reinitialization.
+g_eqn_model:
+   active:                0                                           # G-Equation model flag: 0 or 1.
+   burned_region:         CEQ                                         # Burned region model: SAGE, CEQ.
+   on_flame:              CEQ                                         # On flame model: SAGE, CEQ.
+   unburned_region:       NONE                                        # Unburned region model: NONE, SAGE.
+   init_value:            -0.1                                        # Initial G-value.
+   grad_g_flag:           1                                           # 0=Explicit method, 1=Sussman method.
+   temp_cutoff:           3000                                        # Temperature above which G is initialized.
+   spark:
+      active:             0                                           # Flag for g_eqn kernel ignition model: 0=don't use, 1=use kernel igniton model.
+ecfm3z_model:
+   active:                0                                           # Flag for ECFM3Z model. 0=off, 1=on.
+   mix_betam:             2                                           # Mixing constant.
+   stretch_alpha:         1.6                                         # Constant for turbulent stretch introduced the surface density production term.
+   itnfs_model:           1                                           # Turbulent flame stretch model (1 by default).
+   destruct_beta:         1                                           # Constant for the surface density destruction term.
+   auto_ignition:
+      active:             0                                           # 0=tabulated kinetics of ignition is off, 1=tabulated kinetics of ignition is on.
+      tki_table_filename: tki_table.h5                                # This file is required by the TKI model (tabulated kinetics of ignition).
+   ai_fsd_factor:         0                                           # Flame surface density deposition factor due to auto-ignition (0 by default).
+   post_flame_model:      0                                           # 0=Solve burned zone with method by Colin et al. (2003), 1=Solve burned zone with CEQ method, 2=Solve burned zone with SAGE.
+   reinit_flag:           2                                           # 0=Single cycle simulation, 1=Custom reinitialization (ecfm3z_reinit.in required), 2=Automatic reinitialization.
+rif_model:
+   active:                0                                           # Flag for RIF model 0 is off, 1 is on.
+   nproc_flamelet:        1                                           # Number of processors for each flamelet.
+   init_zmin:             1e-05                                       # Minimum Z-value to initialize flamelet.
+   unburned_temp_offset:  0                                           # Offset in unburnt temperature (K).
+   flamelet_c_chi:        2                                           # Flamelet scalar dissipation constant.
+   cfd_c_chi:             2                                           # CFD scalar dissipation constant.
+   chi_clip:              1000                                        # Max allowed value for scalar dissipation rate.
+   num_flamelets:         1                                           # Number of flamelets.
+   grid_type:             4                                           # Grid in the Z coordinate, Default set to 4 to use Hyperbolic grid.
+   num_zgrids:            100                                         # Number of Z grids, Default set to 100.
+   pdf_flag:              0                                           # 0 is beta pdf, 1 is clipped Gaussian pdf.
+   transport_all_species:
+      active:             0                                           # 0=all the species will be transported, 1=only species listed below will be transported.
+      num_transport_species: [O2, N2, CO2, H2O]                       # Number of RIF species will be transported.
+   boundary_condition:
+      rif_bc0:
+         O2:              0
+      rif_bc1:
+         {}
+      bc1_temp:           700                                         # Gaseous phase fuel temperature (K).
+surface_chemistry_flag:   0                                           # Flag to activate surface chemistry modeling: 0=do not use surface chemistry model, 1= use (requires surface_chemistry.in).
+sl_model:
+   active:                0                                           # 0=Constant laminar flamespeed, 1=Metghalchi and Keck model, 2=Gulder model, 3=Rahim flamespeed correlation for Methane, 4=IFPEN Metghalchi and Keck model(ECFM/ECFM3Z), 5=User-defined data file (.h5), 11=Metghalchi and Keck model for gasoline, 21=Gulder model for gasoline.
+   sl_option:
+      constant_laminar_flamespeed: -999999                            # Constant laminar flamespeed (m/s).
+      constant_laminar_flame_thickness: 0                             # Constant laminar flame thickness.
+      laminar_flamespeed_correlations:
+         general_control:
+            temp_ref:     298                                         # Reference temperature.
+            pres_ref:     101325                                      # Reference pressure.
+            temp_a:       1.2                                         # Temperature exponent constant.
+            temp_m:       -0.8                                        # Temperature constant 'm'.
+            pres_a:       -0.26                                       # Pressure exponent constant.
+            pres_m:       0.22                                        # Pressure constant 'm'.
+            dilution:     0                                           # Use mass fraction for Metghalchi laminar flamespeed. Use mole fraction for Gulder laminar flamespeed.
+         metghalchi:
+            bm:           0.2632                                      # Metghalchi constant 1 (m/s).
+            b2:           -0.8472                                     # Metghalchi constant 2 (m/s).
+            equiv_ratio:  1.13                                        # Metghalchi ref. equivalence ratio.
+         gulder:
+            omega:        0.4658                                      # Gulder coefficient for calculating laminar flamespeed.
+            eta:          -0.326                                      # Gulder coefficient for calculating laminar flamespeed.
+            xi:           4.48                                        # Gulder coefficient for calculating laminar flamespeed.
+      tlf_table_filename: ""                                          # Laminar flamespeed data file.
+st_model:
+   active:                1                                           # Flag for turbulent flamespeed model: 0=off, 1=Peters w/o g_prime model, 11=Peters w/ g_prime model, 2=Zimont model, 3=Pitsch model (LES only), 4=Viscosity ratio model.
+   st_option:
+      peters_correlation:
+         a4:              0.78                                        # Constant for turbulent flamespeed calculation (a4).
+         b1:              2                                           # Constant for turbulent flamespeed calculation (b1).
+         b3:              1                                           # Constant for turbulent flamespeed calculation (b3).
+         g_prime_cs:      2                                           # Constant used for calculating g_prime equation dissipation.
+      zimont_correlation:
+         a:               0.52                                        # Constant A for the Zimont model.
+         quenching_flag:  0
+      pitsch_correlation:
+         b1:              2                                           # Constant for turbulent flamespeed calculation (b1).
+         b3:              1                                           # Constant for turbulent flamespeed calculation (b3).
+mix_frac_output:
+   mix_frac:
+      active:             0                                           # 0=do not calculate mixture fraction, 1=calculate mixture fraction.
+   mix_frac_var:
+      active:             0                                           # 0=do not calculate mixture fraction variance, 1=calculate mixture fraction variance.
+   c_chi:                 2                                           # Constant used in modeling of the scalar dissipation in the mixture fraction variance calculation.
+borghi_diagram_output_flag: 0                                         # 0=do not output Borghi-Peters diagram, 1=output Borghi-Peters diagram.
+flammability_index_output_flag: 0                                     # Calculate mixture flammability index. 0=do not calculate, 1=calculate.
+auto_ignition_index_output_flag: 0                                    # Calculate mixture auto-ignition index. 0=do not calculate, 1=calculate.
+solid_sage_model:
+   active:                0                                           # 0-No Solid SAGE, 1-Use Solid SAGE.
+   region_flag:           0                                           # 0-No Solid SAGE Region, 1-Use Solid SAGE Region.
+   temporal_type:         CYCLIC                                      # SEQUENTIAL/ CYCLIC/ PERMANENT (Temporal type).
+   period:                720                                         # Time period.
+   start_time:            -999999                                     # Starting time.
+   end_time:              -999999                                     # End time.
+   ode_solver:
+      rel_tol:            0.0001                                      # Relative tolerance.
+      abs_tol:            1e-14                                       # Absolute tolerance.
+

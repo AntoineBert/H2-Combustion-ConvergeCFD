@@ -1,0 +1,66 @@
+version: 4
+##!Exported by CONVERGE Studio v4.1.2 Dec 17 2024
+---
+
+-  embedding:
+      embed_type:         CYLINDER                                    # Type of embedding. NOZZLE and INJECTOR are disabled if Parcel simulation is not active.
+      first_end:
+         x_center:        [0, 0, -0.1]                                # Center point of the first end of a cylinder.
+         radius:          0.05                                        # Radius of the first end of a cylinder.
+      second_end:
+         x_center:        [0, 0, 0.1]                                 # Center point of the second end of a cylinder.
+         radius:          0.05                                        # Radius of the second end of a cylinder.
+      embed_scale:        2                                           # Defines the level of refinement for embedding. Represents the value of n in dx_base/2^n.
+      temporal_type:      PERMANENT                                   # Describes the temporal type of timings defined for this embedding. Should be either PERMANENT, SEQUENTIAL or CYCLIC.
+      start_time:         -999999                                     # Time when embedding starts. Not used when temporal_type is PERMANENT.
+      end_time:           -999999                                     # Time when embedding ends. Not used when temporal_type is PERMANENT.
+      description:        Embedding 15
+      moving_control:
+         moving_flag:     STATIONARY                                  # Moving options: STATIONARY, PRESCRIBED or MOVE_WITH_BOUNDARY.
+-  embedding:
+      embed_type:         SPHERE                                      # Type of embedding. NOZZLE and INJECTOR are disabled if Parcel simulation is not active.
+      x_center:           [0.0275, -0.0025, 0.003]                    # The center point of the embedded shape.
+      radius:             0.0005                                      # The radius of the sphere for sphere-shaped embedding, or radius of the end of a cylinder for cylinder embedding, or the outer radius of an annulus for annular embedding.
+      embed_scale:        6                                           # Defines the level of refinement for embedding. Represents the value of n in dx_base/2^n.
+      temporal_type:      CYCLIC                                      # Describes the temporal type of timings defined for this embedding. Should be either PERMANENT, SEQUENTIAL or CYCLIC.
+      period:             720                                         # Cyclic period for embedding.  Only used when temporal_type is CYCLIC.
+      start_time:         -5                                          # Time when embedding starts. Not used when temporal_type is PERMANENT.
+      end_time:           20                                          # Time when embedding ends. Not used when temporal_type is PERMANENT.
+      description:        Embedding 16
+      moving_control:
+         moving_flag:     STATIONARY                                  # Moving options: STATIONARY, PRESCRIBED or MOVE_WITH_BOUNDARY.
+-  embedding:
+      embed_type:         SPHERE                                      # Type of embedding. NOZZLE and INJECTOR are disabled if Parcel simulation is not active.
+      x_center:           [0.0275, -0.0025, 0.003]                    # The center point of the embedded shape.
+      radius:             0.001                                       # The radius of the sphere for sphere-shaped embedding, or radius of the end of a cylinder for cylinder embedding, or the outer radius of an annulus for annular embedding.
+      embed_scale:        5                                           # Defines the level of refinement for embedding. Represents the value of n in dx_base/2^n.
+      temporal_type:      CYCLIC                                      # Describes the temporal type of timings defined for this embedding. Should be either PERMANENT, SEQUENTIAL or CYCLIC.
+      period:             720                                         # Cyclic period for embedding.  Only used when temporal_type is CYCLIC.
+      start_time:         -5                                          # Time when embedding starts. Not used when temporal_type is PERMANENT.
+      end_time:           20                                          # Time when embedding ends. Not used when temporal_type is PERMANENT.
+      description:        Embedding 17
+      moving_control:
+         moving_flag:     STATIONARY                                  # Moving options: STATIONARY, PRESCRIBED or MOVE_WITH_BOUNDARY.
+-  embedding:
+      embed_type:         BOUND                                       # Type of embedding. NOZZLE and INJECTOR are disabled if Parcel simulation is not active.
+      boundary_id:        13                                          # Boundary identifier (from boundary.in) that defines the boundary on which embedding is to be added.
+      embed_scale:        3                                           # Defines the level of refinement for embedding. Represents the value of n in dx_base/2^n.
+      num_embed:          1                                           # Number of layers of embedding (at the specified embed_scale) to be added to the boundary.
+      temporal_type:      PERMANENT                                   # Describes the temporal type of timings defined for this embedding. Should be either PERMANENT, SEQUENTIAL or CYCLIC.
+      start_time:         -999999                                     # Time when embedding starts. Not used when temporal_type is PERMANENT.
+      end_time:           -999999                                     # Time when embedding ends. Not used when temporal_type is PERMANENT.
+      description:        Embedding 18
+      moving_control:
+         moving_flag:     STATIONARY                                  # Moving options: STATIONARY, PRESCRIBED or MOVE_WITH_BOUNDARY.
+-  embedding:
+      embed_type:         BOUND                                       # Type of embedding. NOZZLE and INJECTOR are disabled if Parcel simulation is not active.
+      boundary_id:        11                                          # Boundary identifier (from boundary.in) that defines the boundary on which embedding is to be added.
+      embed_scale:        3                                           # Defines the level of refinement for embedding. Represents the value of n in dx_base/2^n.
+      num_embed:          1                                           # Number of layers of embedding (at the specified embed_scale) to be added to the boundary.
+      temporal_type:      PERMANENT                                   # Describes the temporal type of timings defined for this embedding. Should be either PERMANENT, SEQUENTIAL or CYCLIC.
+      start_time:         -999999                                     # Time when embedding starts. Not used when temporal_type is PERMANENT.
+      end_time:           -999999                                     # Time when embedding ends. Not used when temporal_type is PERMANENT.
+      description:        Embedding 19
+      moving_control:
+         moving_flag:     STATIONARY                                  # Moving options: STATIONARY, PRESCRIBED or MOVE_WITH_BOUNDARY.
+

@@ -1,0 +1,48 @@
+version: 4
+---
+
+-  source:
+      description:        Source 8
+      equation:           ENERGY
+      type:               TOTAL_VALUE
+      value:              0.02
+      stream_id:          ALL
+      temporal_control:
+         type:            CYCLIC
+         cyclic_period:   720
+         source_start_time: 0
+         source_end_time: 0.5
+      max_value:          50000
+      shape:
+         type:            SPHERE
+         x_center:        [0.0275, -0.00249999771118, 0.003]
+         radius:          0.0005
+      moving_control:
+         moving_flag:     STATIONARY
+         velocity:        [0, 0, 0]
+         max_displace:    999999
+         reset_source_flag: DO_NOT_RESET
+      mult_dt_source:     1
+-  source:
+      description:        Source 9
+      equation:           ENERGY
+      type:               TOTAL_VALUE
+      value:              0.02
+      stream_id:          ALL
+      temporal_control:
+         type:            CYCLIC
+         cyclic_period:   720
+         source_start_time: 0
+         source_end_time: 10
+      max_value:          50000
+      shape:
+         type:            SPHERE
+         x_center:        [0.0275, -0.0025, 0.003]
+         radius:          0.0005
+      moving_control:
+         moving_flag:     STATIONARY
+         velocity:        [0, 0, 0]
+         max_displace:    999999
+         reset_source_flag: DO_NOT_RESET
+      mult_dt_source:     1
+

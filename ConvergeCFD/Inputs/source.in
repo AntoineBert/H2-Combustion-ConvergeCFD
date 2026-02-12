@@ -1,0 +1,49 @@
+version: 4
+##!Exported by CONVERGE Studio v4.1.2 Dec 17 2024
+---
+
+-  source:
+      description:        Source 8
+      equation:           ENERGY                                      # Source equation (ENERGY, U-EQ, V-EQ, W-EQ, TKE, EPS, [species], [passive], POROUS, BAFFLE, BATTERY, RELAXATION_ZONE, SHORT_CIRCUIT, MASS).
+      type:               TOTAL_VALUE                                 # Source type: PER_UNIT_VOLUME_TIME, PER_UNIT_TIME, TOTAL_VALUE, PRESSURE_TRACE, HEAT_RELEASE_DATA, HATCHARD_KIM_MODEL, REN_MODEL, LAGRANGIAN_SPARK_MODEL.
+      value:              0.02                                        # Value.
+      stream_id:          ALL
+      temporal_control:
+         type:            CYCLIC                                      # Temporal type.
+         cyclic_period:   720                                         # Cycle period.
+         source_start_time: 0                                         # The start time, in seconds or crank angle degrees, for the Source/Sink model.
+         source_end_time: 0.5                                         # The end time, in seconds or crank angle degrees, for the Source/Sink model.
+      max_value:          50000                                       # The maximum allowed for the solution variable associated with the source equation (e.g. temperature for ENERGY, u-velocity for U-EQ, or turbulent kinetic energy for TKE).
+      shape:
+         type:            SPHERE                                      # Source shape (BOX, SPHERE, CYLINDER, REGION, LINE, CIRCLE, BOUNDARY, CREVICE, LAGRANGIAN_SPARK_LINE, ANNULUS).
+         x_center:        [0.0275, -0.00249999771118, 0.003]
+         radius:          0.0005
+      moving_control:
+         moving_flag:     STATIONARY                                  # 0=Stationary, 1=Prescribed velocity; 2 = Move with flow; 3 = Move with boundary.
+         velocity:        [0, 0, 0]                                   # Velocity vector of the source.
+         max_displace:    999999                                      # Distance for the maximum displacement of source.
+         reset_source_flag: DO_NOT_RESET                              # Displacement control (0-2). Refer to the documentation for details.
+      mult_dt_source:     1                                           # Source time-step multiplier.
+-  source:
+      description:        Source 9
+      equation:           ENERGY                                      # Source equation (ENERGY, U-EQ, V-EQ, W-EQ, TKE, EPS, [species], [passive], POROUS, BAFFLE, BATTERY, RELAXATION_ZONE, SHORT_CIRCUIT, MASS).
+      type:               TOTAL_VALUE                                 # Source type: PER_UNIT_VOLUME_TIME, PER_UNIT_TIME, TOTAL_VALUE, PRESSURE_TRACE, HEAT_RELEASE_DATA, HATCHARD_KIM_MODEL, REN_MODEL, LAGRANGIAN_SPARK_MODEL.
+      value:              0.02                                        # Value.
+      stream_id:          ALL
+      temporal_control:
+         type:            CYCLIC                                      # Temporal type.
+         cyclic_period:   720                                         # Cycle period.
+         source_start_time: 0                                         # The start time, in seconds or crank angle degrees, for the Source/Sink model.
+         source_end_time: 10                                          # The end time, in seconds or crank angle degrees, for the Source/Sink model.
+      max_value:          50000                                       # The maximum allowed for the solution variable associated with the source equation (e.g. temperature for ENERGY, u-velocity for U-EQ, or turbulent kinetic energy for TKE).
+      shape:
+         type:            SPHERE                                      # Source shape (BOX, SPHERE, CYLINDER, REGION, LINE, CIRCLE, BOUNDARY, CREVICE, LAGRANGIAN_SPARK_LINE, ANNULUS).
+         x_center:        [0.0275, -0.0025, 0.003]
+         radius:          0.0005
+      moving_control:
+         moving_flag:     STATIONARY                                  # 0=Stationary, 1=Prescribed velocity; 2 = Move with flow; 3 = Move with boundary.
+         velocity:        [0, 0, 0]                                   # Velocity vector of the source.
+         max_displace:    999999                                      # Distance for the maximum displacement of source.
+         reset_source_flag: DO_NOT_RESET                              # Displacement control (0-2). Refer to the documentation for details.
+      mult_dt_source:     1                                           # Source time-step multiplier.
+

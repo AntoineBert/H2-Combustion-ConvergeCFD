@@ -1,0 +1,11 @@
+version: 4
+---
+
+cells:
+   general:               [mach, cfl_u, density, cfl_mach, pressure, temperature, dt, velocity, cfl_nu]
+   combustion:            [equiv_ratio, react_ratio]
+   turbulence:            [eps, tke, turb_length, turb_viscosity]
+   statistics:            []
+   species_massfrac:      [H2O, H2, O2]
+   species_molefrac:      [H2, O2]
+

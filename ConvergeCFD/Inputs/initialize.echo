@@ -1,0 +1,53 @@
+version: 4
+---
+
+region_blocks:
+   -  region:
+         region_id:       1
+         vel_init:        [0, 0, 0]
+         temp_init:       319.80347
+         pres_init:       100193.07
+         turbulence_init:
+            approach:     value
+            value:
+               tke:       62.0271
+               eps:       17183.4
+         species_init:
+            h2:           0.025787966
+            n2:           0.74722063
+            o2:           0.226991404
+         passive_init:
+            {}
+   -  region:
+         region_id:       0
+         vel_init:        [0, 0, 0]
+         temp_init:       776.17847
+         pres_init:       102546.87
+         turbulence_init:
+            approach:     value
+            value:
+               tke:       62.0271
+               eps:       17183.4
+         species_init:
+            h2o:          0.127641
+            n2:           0.759002
+            o2:           0.113357
+         passive_init:
+            {}
+   -  region:
+         region_id:       2
+         vel_init:        [0, 0, 0]
+         temp_init:       786.17474
+         pres_init:       99508.01
+         turbulence_init:
+            approach:     value
+            value:
+               tke:       62.0271
+               eps:       17183.4
+         species_init:
+            h2o:          0.127641
+            n2:           0.759002
+            o2:           0.113357
+         passive_init:
+            {}
+

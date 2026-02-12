@@ -1,0 +1,43 @@
+version: 4
+##!Exported by CONVERGE Studio v4.1.2 Dec 17 2024
+---
+
+amr_settings:
+   max_cells:             10000000                                    # Maximum number of cells in the entire domain.
+   min_cells:             1                                           # Minimum number of cells in the entire domain.
+   transient_settings:
+      embed_frequency:    1                                           # Specify number of cycles/iterations between embed events.
+      release_frequency:  25                                          # Specify number of cycles/iterations between release events.
+amr_groups:
+   -  amr_group:
+         amr_regions:     0                                           # Active AMR regions.
+         amr_velocity:
+            active:       1                                           # Enable AMR based on velocity conditions.
+            embed_scale:  3                                           # Maximum embedding level for velocity.
+            sgs_embed:    1                                           # Minimum velocity sub-grid value above which a cell will be embedded.
+            temporal_type: PERMANENT                                  # Timing control type.
+            amr_type:     sgs
+         amr_temperature:
+            active:       1                                           # Enable AMR based on temperature conditions.
+            embed_scale:  4                                           # Maximum embedding level for temperature.
+            sgs_embed:    2.5                                         # Minimum temperature sub-grid value above which a cell will be embedded.
+            temporal_type: CYCLIC                                     # Timing control type.
+            period:       720                                         # Cycle period.
+            start_time:   -30                                         # Time to start the AMR.
+            end_time:     130                                         # Time to end the AMR.
+            amr_type:     sgs
+   -  amr_group:
+         amr_regions:     1                                           # Active AMR regions.
+         amr_velocity:
+            active:       1                                           # Enable AMR based on velocity conditions.
+            embed_scale:  3                                           # Maximum embedding level for velocity.
+            sgs_embed:    1                                           # Minimum velocity sub-grid value above which a cell will be embedded.
+            temporal_type: PERMANENT                                  # Timing control type.
+            amr_type:     sgs
+amr_bounds:
+   []
+amr_yplus_restrict:
+   []
+amr_proximity:
+   []
+

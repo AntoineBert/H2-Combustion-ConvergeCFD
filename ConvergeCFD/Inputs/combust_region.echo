@@ -1,0 +1,11 @@
+version: 4
+---
+
+combust_region_control:
+   -  combust_region:
+         region_id:       0
+         temporal_type:   CYCLIC
+         period:          720
+         start_time:      -30
+         end_time:        130
+
